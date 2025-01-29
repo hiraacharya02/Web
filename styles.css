@@ -1,20 +1,18 @@
-/* Basic styles for the page */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('images/cat5.jpg'); /* Set cat5 image as background */
-    background-size: cover; /* Make the image cover the entire page */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Ensure the image doesn't repeat */
-    color: white; /* White text for contrast */
-    height: 100vh; /* Make sure the body takes the full viewport height */
+    background-image: url('images/cat5.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: white; 
+    height: 100vh; 
     display: flex;
     flex-direction: column;
-    position: relative; /* Ensure overlay works properly */
+    position: relative; 
 }
 
-/* Dark overlay to improve text visibility over the image */
 body::before {
     content: '';
     position: absolute;
@@ -22,15 +20,14 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-    z-index: -1; /* Place overlay behind the content */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -1; 
 }
 
-/* Navigation Bar */
 nav {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 10px;
-    z-index: 1; /* Ensure nav stays on top */
+    z-index: 1; 
 }
 
 nav ul {
@@ -49,26 +46,24 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Section styling */
 section {
     padding: 50px;
     text-align: center;
-    z-index: 1; /* Ensure text sections are above the background */
-    margin-bottom: 20px; /* Ensure sections do not overlap */
+    z-index: 1;
+    margin-bottom: 20px; 
 }
 
-/* Heading Styling */
+
 h2 {
-    color: #fff; /* White text for contrast */
-    font-size: 2rem; /* Larger heading text */
+    color: #fff; 
+    font-size: 2rem; 
 }
 
-/* Paragraph Styling */
+
 p {
-    font-size: 1.1rem; /* Slightly larger text for readability */
+    font-size: 1.1rem; 
 }
 
-/* Image gallery styling */
 .image-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -80,39 +75,35 @@ p {
 .image-gallery img {
     width: 100%;
     height: auto;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    border: 5px solid #fff; /* White border around images */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    border-radius: 10px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+    border: 5px solid #fff; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .image-gallery img:hover {
-    transform: scale(1.05); /* Slightly enlarge the image */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Increase shadow effect */
-}
+    transform: scale(1.05); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
 
-/* Contact section */
 section#section3 {
-    background-color: rgba(255, 255, 255, 0.8); /* Light white background with transparency */
+    background-color: rgba(255, 255, 255, 0.8); 
     padding: 50px;
     border-radius: 10px;
-    margin-top: 50px; /* Make sure there's space from previous sections */
-    color: black; /* Set text color to black in Contact section */
+    margin-top: 50px; 
+    color: black; 
 }
 
-/* Targeting Contact Us Heading */
+
 section#section3 h2 {
-    color: black; /* Make the heading in the Contact section black */
+    color: black; 
 }
 
-/* Add smooth scroll effect */
 html {
     scroll-behavior: smooth;
 }
 
-/* Links */
 a {
-    color: #00aaff; /* Light blue links */
+    color: #00aaff; 
     text-decoration: none;
     font-weight: bold;
 }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite Database Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input,
+        button {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SQLite Database Operations</h1>
+
+    <h2>Add User</h2>
+    <form id="addUserForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Add User</button>
+    </form>
+
+    <h2>View Users</h2>
+    <button id="viewUsersButton">View Users</button>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <h2>Delete User</h2>
+    <form id="deleteUserForm">
+        <label for="userId">User ID:</label>
+        <input type="number" id="userId" name="userId" required>
+        <br>
+        <button type="submit">Delete User</button>
+    </form>
+
+    <script>
+        document.getElementById('addUserForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            fetch('http://localhost:3000/add-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    document.getElementById('addUserForm').reset();
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('viewUsersButton').addEventListener('click', function () {
+            fetch('http://localhost:3000/users')
+                .then(response => response.json())
+                .then(data => {
+                    const usersTableBody = document.getElementById('usersTable').getElementsByTagName('tbody')[0];
+                    usersTableBody.innerHTML = '';
+                    data.users.forEach(user => {
+                        const row = usersTableBody.insertRow();
+                        row.insertCell(0).textContent = user.id;
+                        row.insertCell(1).textContent = user.name;
+                        row.insertCell(2).textContent = user.email;
+                        const deleteCell = row.insertCell(3);
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.addEventListener('click', function () {
+                            deleteUser(user.id);
+                        });
+                        deleteCell.appendChild(deleteButton);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('deleteUserForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const userId = document.getElementById('userId').value;
+
+            deleteUser(userId);
+        });
+
+        function deleteUser(userId) {
+            fetch(`http://localhost:3000/delete-user/${userId}`, {
+                method: 'DELETE'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    document.getElementById('deleteUserForm').reset();
+                    document.getElementById('viewUsersButton').click();
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+
+</html>

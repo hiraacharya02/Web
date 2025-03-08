@@ -1,0 +1,228 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and main layout */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f7f7;
+  padding: 0;
+  margin: 0;
+}
+
+/* App Container */
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+/* Content Container for central alignment */
+.content-container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Popup styling */
+/* Popup for success messages (User Added or User Deleted) */
+.popup {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  display: inline-block;
+  width: 300px;
+  text-align: center;
+}
+
+.popup button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.popup button:hover {
+  opacity: 0.8;
+}
+
+/* Modal overlay to distinguish the modal from the rest of the UI */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Delete confirmation modal styling */
+.delete-popup {
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.delete-popup p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Buttons inside the delete confirmation modal */
+.confirm-delete, .cancel-delete {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 5px;
+}
+
+.confirm-delete:hover {
+  background-color: #218838;
+}
+
+.cancel-delete {
+  background-color: #dc3545;
+}
+
+.cancel-delete:hover {
+  background-color: #c82333;
+}
+
+/* User List Styling */
+.user-list-container {
+  margin-top: 30px;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Ensures spacing between user cards */
+  justify-content: center;
+}
+
+.user-card {
+  background-color: #fff;
+  padding: 20px; /* Added padding inside user card */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  width: 220px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column; /* Ensures content is stacked vertically */
+  align-items: center; /* Centers content horizontally */
+}
+
+.user-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px; /* Added margin between title and other elements */
+  color: #333;
+}
+
+.user-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px; /* Added margin between description and buttons */
+  text-align: center; /* Center text inside the card */
+}
+
+.user-card-buttons {
+  display: flex;
+  gap: 10px; /* Space between the buttons */
+  justify-content: center; /* Center buttons horizontally */
+  width: 100%; /* Ensure buttons stretch across the card */
+}
+
+.user-card button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Increased padding inside buttons */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  width: 100%; /* Ensures button spans the width of the card */
+}
+
+.user-card button:hover {
+  background-color: #e53935;
+}
+
+/* View Users Button */
+button[type="submit"],
+button {
+  padding: 16px;
+  font-size: 1.2rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover,
+button:hover {
+  background-color: #45a049;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 16px;
+  font-size: 1.2rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+  .content-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .user-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
